@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Kajian Islam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+       body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+                url('bgputih.png') no-repeat center center fixed;
+    background-size: cover;
+}
+        .script-font {
+            font-family: 'Dancing Script', cursive;
+        }
+        .footer-bg {
+            background: url('footer-bg.png') no-repeat center center;
+            background-size: cover;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .audio-control img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        .form {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form input[type="text"], .form input[type="email"], .form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .form button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background-color: #2d6a4f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form button:hover {
+            background-color: #22543d;
+        }
+    </style>
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date("February 12, 2025 10:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "Acara telah dimulai!";
+            }
+        }
+        setInterval(updateCountdown, 1000);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const fadeElements = document.querySelectorAll(".fade-in");
+            fadeElements.forEach(el => el.classList.add("show"));
+
+            const audio = document.getElementById("background-audio");
+            const audioIcon = document.getElementById("audio-icon");
+
+            audioIcon.addEventListener("click", () => {
+                if (audio.paused) {
+                    audio.play();
+                    audioIcon.src = "musicon.png";
+                } else {
+                    audio.pause();
+                    audioIcon.src = "musicoff.png";
+                }
+            });
+        });
+          // Toggle the mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    </script>
+<header class="bg-white shadow-md py-4 fixed w-full top-0 left-0 z-10 fade-in">
+    <nav class="container mx-auto flex justify-between items-center px-4">
+        <!-- Logo or Title -->
+        <a href="#" class="text-green-700 font-bold text-xl">Kajian Islam</a>
+
+        <!-- Navigation Links (Desktop) -->
+        <div class="hidden md:flex justify-center space-x-6 bg-gray-200 p-4 rounded-lg shadow-md">
+            <a href="#informasi" class="text-green-700 font-semibold hover:underline">Informasi Kajian</a>
+            <a href="#deskripsi" class="text-green-700 font-semibold hover:underline">Deskripsi Dakwah</a>
+            <a href="#dalil" class="text-green-700 font-semibold hover:underline">Dalil Al-Qur'an</a>
+            <a href="#foto" class="text-green-700 font-semibold hover:underline">Foto Kegiatan</a>
+            <a href="#lokasi" class="text-green-700 font-semibold hover:underline">Lokasi</a>
+            <a href="#kontak" class="text-green-700 font-semibold hover:underline">Kontak</a>
+        </div>
+
+        <!-- Hamburger Icon (Mobile) -->
+        <button id="menu-toggle" class="md:hidden text-green-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Dropdown Menu (Mobile) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-200 p-4 rounded-lg shadow-md mt-2">
+        <a href="#informasi" class="block text-green-700 font-semibold hover:underline py-1">Informasi Kajian</a>
+        <a href="#deskripsi" class="block text-green-700 font-semibold hover:underline py-1">Deskripsi Dakwah</a>
+        <a href="#dalil" class="block text-green-700 font-semibold hover:underline py-1">Dalil Al-Qur'an</a>
+        <a href="#foto" class="block text-green-700 font-semibold hover:underline py-1">Foto Kegiatan</a>
+        <a href="#lokasi" class="block text-green-700 font-semibold hover:underline py-1">Lokasi</a>
+        <a href="#kontak" class="block text-green-700 font-semibold hover:underline py-1">Kontak</a>
+    </div>
+</header>
+    
+    <audio id="background-audio" autoplay loop>
+        <source src="AudioUndangan.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <div class="audio-control">
+        <img id="audio-icon" src="musicon.png" alt="Audio Control">
+    </div>
+
+    <div class="container mx-auto px-4 py-24 text-center">
+        <div class="relative flex items-center justify-center mt-16 fade-in">
+            <img src="lampu.png" alt="Gambar Kiri" class="w-24 h-auto mr-4">
+            <h1 class="text-4xl font-bold text-green-700 script-font">Undangan Kajian Islam</h1>
+            <img src="lampu.png" alt="Gambar Kanan" class="w-24 h-auto ml-4">
+        </div>
+        <p class="mt-4 text-lg fade-in">Mari bergabung dalam kajian ilmiah untuk meningkatkan keimanan dan ketakwaan kita.</p>
+        <div id="informasi" class="mt-8 bg-green-100 p-6 shadow-lg rounded-lg max-w-lg mx-auto">
+            <h2 class="text-2xl font-semibold">"Menjalani Hidup dan Menghadapi Kematian dengan Seimbang"</h2>
+            <p class="mt-2 text-gray-600">Pembicara: </p>
+            <p class="text-green-700 script-font text-3xl">Siti Azra Aida Dayini</p>
+            <img src="Day1.jpg" alt="Foto Pembicara" class="w-40 h-40 mx-auto mt-4 rounded-full shadow-md object-cover">
+            <p class="mt-2 text-gray-600">Hari/Tanggal: Rabu, 12 Februari 2025</p>
+            <p class="mt-2 text-gray-600">Waktu: 10.00 WIB</p>
+            <p id="countdown" class="mt-4 text-red-600 text-xl font-bold"></p>
+        </div>
+        <div id="deskripsi" class="mt-8 bg-green-100 p-6 shadow-lg rounded-lg max-w-lg mx-auto fade-in">
+            <h2 class="text-2xl font-semibold">Deskripsi Dakwah</h2>
+            <p class="mt-2 text-gray-600">Kajian ini membahas keseimbangan antara kehidupan dunia dan persiapan akhirat. Dengan pemahaman yang benar, kita dapat menjalani hidup yang penuh keberkahan.</p>
+        </div>
+        
+        <div id="dalil" class="mt-8 bg-green-100 p-6 shadow-lg rounded-lg max-w-lg mx-auto fade-in">
+            <h2 class="text-2xl font-semibold">Dalil Al-Qur'an</h2>
+            <p class="mt-2 text-gray-600 italic">"Dan carilah pada apa yang telah dianugerahkan Allah kepadamu (kebahagiaan) negeri akhirat, dan janganlah kamu melupakan bagianmu dari (kenikmatan) dunia..."</p>
+            <p class="text-gray-600">(QS. Al-Qasas: 77)</p>
+        </div>
+        <div id="foto" class="mt-8 bg-white p-6 shadow-lg rounded-lg max-w-4xl mx-auto fade-in">
+            <h2 class="text-2xl font-semibold">Foto Kegiatan</h2>
+            <div class="grid grid-cols-4 gap-4 mt-4">
+                <img src="kegiatan1.jpg" alt="Foto 1" class="w-full h-40 object-cover rounded-lg">
+                <img src="kegiatan2.jpg" alt="Foto 2" class="w-full h-40 object-cover rounded-lg">
+                <img src="kegiatan3.jpg" alt="Foto 3" class="w-full h-40 object-cover rounded-lg">
+                <img src="kegiatan4.jpg" alt="Foto 4" class="w-full h-40 object-cover rounded-lg">
+            </div>
+        </div>
+        <div id="lokasi" class="mt-8 bg-green-100 p-6 shadow-lg rounded-lg max-w-lg mx-auto fade-in">
+            <h2 class="text-2xl font-semibold">Lokasi Kajian</h2>
+            <p class="mt-2 text-gray-600">Gedung SMK INFOKOM</p>
+            <p class="mt-2 text-gray-600">Jl.Letdjen Ibrahim Adjie</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.4695642589445!2d106.82715301563479!3d-6.601567095207429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5d09c8f0f5f%3A0x876b5790a3a8d6c8!2sMasjid+Agung+Al-Bukhari!5e0!3m2!1sid!2sid!4v1612351004825!5m2!1sid!2sid" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+        <form class="form">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" placeholder="Masukkan nama Anda">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Masukkan email Anda">
+
+            <label for="attendance">Konfirmasi Kehadiran:</label>
+            <select id="attendance" name="attendance">
+                <option value="">-- Pilih --</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+            </select>
+
+            <button type="submit">Kirim</button>
+        </form>
+
+    </div>
+    <footer id="Kontak" class="bg-green-100 text-gray-800 py-6 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row justify-between items-center">
+                <!-- Bagian Kontak -->
+                <div class="text-center lg:text-left mb-4 lg:mb-0">
+                    <h2 class="text-lg font-semibold mb-2">Kontak</h2>
+                    <p>WhatsApp: <a href="https://wa.me/081234567890" class="text-green-700 hover:underline">0812-3456-7890</a></p>
+                    <p>Email: <a href="mailto:info@kajianislam.com" class="text-green-700 hover:underline">info@kajianislam.com</a></p>
+                </div>
+                <!-- Bagian Lisensi -->
+                <div class="text-center lg:text-right">
+                    <p class="text-sm">&copy; 2025 Siti Azra. Semua Hak Cipta Dilindungi.</p>
+                    <p class="text-sm">Dibuat dengan ❤️ untuk dakwah Islam.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</html>
